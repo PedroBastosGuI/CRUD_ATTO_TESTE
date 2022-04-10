@@ -39,6 +39,7 @@ export  function Edit(){
     const {id} = useParams<Params>();
 
     const {push} = useHistory();
+    
 
     async function updateClient(e:React.FormEvent<FormElement>){
         e.preventDefault();

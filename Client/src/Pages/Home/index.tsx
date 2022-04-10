@@ -24,7 +24,9 @@ export function Home(){
                 </button>                
             </div>
 
-                <Table/>
+                <section>
+                     <Table/>
+                </section>
 
         </Container>
     );

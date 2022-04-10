@@ -68,7 +68,7 @@ export function SingUP(){
             <form onSubmit={handleSubmit(addClient)}>
 
                 <div  className="input_container">
-                    <label htmlFor="razaoSocial">Razão Social</label>
+                    <label htmlFor="razaoSocial">Razão Social*</label>
                     <input 
                     type="text"
                     id="razaoSocial"
@@ -79,7 +79,7 @@ export function SingUP(){
                 </div>
 
                 <div className="input_container">
-                <label htmlFor="nomeFantasia">Nome Fantasia</label>
+                <label htmlFor="nomeFantasia">Nome Fantasia*</label>
                     <input 
                     type="text"
                     id="nomeFantasia"
@@ -90,7 +90,7 @@ export function SingUP(){
                 </div>
 
                 <div className="input_container">
-                    <label htmlFor="telefone">Telefone</label>
+                    <label htmlFor="telefone">Telefone*</label>
                     <input 
                     type="text"
                     id="telefone"
@@ -103,7 +103,7 @@ export function SingUP(){
                 </div>
 
                 <div className="input_container">
-                <label htmlFor="cnpjCpf">CNPJ | CPF</label>
+                <label htmlFor="cnpjCpf">CNPJ | CPF*</label>
                     <input 
                     type="text"
                     id="cnpjCpf"
@@ -114,7 +114,7 @@ export function SingUP(){
                 </div>
 
                 <div className="input_container">
-                <label htmlFor="cidade">Cidade</label>
+                <label htmlFor="cidade">Cidade*</label>
                     <input 
                     type="text"
                     id="cidade"
@@ -127,7 +127,7 @@ export function SingUP(){
                 </div>
 
                 <div className="input_container">
-                <label htmlFor="estado">Estado</label>
+                <label htmlFor="estado">Estado*</label>
                     <input 
                     type="text"
                     placeholder='Estado'
