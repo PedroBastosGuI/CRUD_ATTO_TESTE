@@ -5,7 +5,6 @@ width: 100%;
 margin-top: 2rem;
 
 table{
-    width: 100%;
     border-spacing: 0 0.5rem;
     th{
         color:var(--shape);
@@ -21,19 +20,33 @@ table{
         border:0;
         background: var(--shape);
         color:var(--text-body);
-
+        font-size: 0.85rem;
         button{
             background:transparent;
             border: 0;
             margin-left:0.5rem;
             transition: filter 0.6s;  
             &:hover {
-        filter: opacity(0.3);
+            filter: opacity(0.3);
+            };
+            .icon{
+                font-size: 1.5rem;
+                color: var(--blue_ligth);
+            };
         };
-        .icon{
-            font-size: 1.5rem;
-            color: var(--blue_ligth);
-        };
+
+        .link{
+            background:transparent;
+            border: 0;
+            margin-left:0.5rem;
+            transition: filter 0.6s;  
+            &:hover {
+            filter: opacity(0.3);
+            };
+            .icon{
+                font-size: 1.5rem;
+                color: var(--blue_ligth);
+            };
         }
     };
 

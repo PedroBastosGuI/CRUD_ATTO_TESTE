@@ -9,6 +9,7 @@ import * as yup from "yup";
 
 import { api } from '../../services/api';
 
+
 interface FormsType{
     razaoSocial: string;
     nomeFantasia:string;
@@ -51,6 +52,7 @@ export function SingUP(){
             if(!data){
                 return
             } else{
+                alert("Cliente Cadastrado com sucesso!");
                 push("/")
             };
             console.log(response);

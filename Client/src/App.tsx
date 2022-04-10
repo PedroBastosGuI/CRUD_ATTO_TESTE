@@ -11,6 +11,7 @@ function App() {
   return (
     <Fragment>
     <GlobalStyled/>
+    
       <BrowserRouter>
         <Switch>
           <Route path="/" exact>
@@ -24,6 +25,7 @@ function App() {
           </Route>
         </Switch>
       </BrowserRouter>
+
     </Fragment>
   );
 }

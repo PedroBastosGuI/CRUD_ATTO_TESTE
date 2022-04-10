@@ -4,7 +4,7 @@ import { Table } from '../../Components/Table';
 import {Container} from './styled';
 import { BsFillPersonPlusFill } from "react-icons/bs";
 import {useHistory} from 'react-router-dom';
-
+import Icon from '../../assets/logo.svg'
 export function Home(){
     const {push} = useHistory();
 
@@ -14,7 +14,9 @@ export function Home(){
     return(
         <Container>
             <div className="header_input">
-                <Input
+                <img
+                    src={Icon}
+                    className="App-logo"
                 />
                 <button className="btn-SingUp" onClick={handleRoutesNavigation}>
                     <BsFillPersonPlusFill className="icon"/>
@@ -22,9 +24,7 @@ export function Home(){
                 </button>                
             </div>
 
-            <section>
                 <Table/>
-            </section>
 
         </Container>
     );

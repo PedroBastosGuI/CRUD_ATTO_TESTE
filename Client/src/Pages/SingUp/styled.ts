@@ -8,12 +8,13 @@ export const Container = styled.main`
     justify-content: center;
 
     gap:3rem;
+    margin: 3rem 0rem;
 
     margin-top: 3rem;
     p{
         font-size:1.1rem;
         color:var(--danger)
-    };s
+    };
 
     h2{
 

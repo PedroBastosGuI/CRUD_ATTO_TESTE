@@ -50,7 +50,7 @@ export  function Edit(){
             client_cidade:client_cidade,
             client_estado:client_estado
         });
-        console.log("eu to indo ae", response);
+        alert("Cliente atualizado com sucesso!");
         push("/");
 }
 

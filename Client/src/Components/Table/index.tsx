@@ -3,6 +3,9 @@ import {Container} from './styled';
 import { BsPencilSquare,BsXCircle} from "react-icons/bs";
 import { api } from '../../services/api';
 import { Link } from "react-router-dom";
+import Alert from '@mui/material/Alert';
+
+
 interface PropsClient{
     id: number;
     razao_social:string;
@@ -19,19 +22,28 @@ export function Table(){
     useEffect(() => {
         getClient();
     },[]);
+
+
     async function getClient(){
         const response = await api.get('/client');
         setGetData(response.data);
     };
-
+    
     async function deleteClient(id:number){
-        await api.delete(`client/${id}`)
-        getClient();
+        const confirmar = window.confirm("Tem certeza que deseja excluir o cliente?");
+        console.log(confirmar);
+        if(confirmar){
+            await api.delete(`client/${id}`)
+            getClient();
+        }else{
+            return
+        }
+             
     };
     return(
         
         <Container>
-            
+           
             <table>
                 <thead>
                     <tr>
@@ -58,6 +70,7 @@ export function Table(){
                         <td>{item.client_estado}</td>
                         <td>
                             <Link
+                                className="link"
                                to={`/edit/${item.id}`}
                             >
                                 <BsPencilSquare className="icon"/>

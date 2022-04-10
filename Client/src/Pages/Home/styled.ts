@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 export const Container = styled.main`
     width: 100%;
-    padding: 0 0.5rem;
+    padding: 0 1rem;
 
     display: flex;
     flex-direction: column;
@@ -12,6 +12,26 @@ export const Container = styled.main`
     align-items: center;
     justify-content: center;
 
+    .App-logo{
+        width:12rem;
+        pointer-events: none;
+
+    };
+
+    @media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+    }
+    };
+
+        @keyframes App-logo-spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+    };
     .header_input{
         width: 100%;
         display: flex;
