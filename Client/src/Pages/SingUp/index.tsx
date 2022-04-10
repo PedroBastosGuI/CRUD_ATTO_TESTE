@@ -1,13 +1,14 @@
-import React,{useState} from 'react';
+import React from 'react';
 
 import {Container} from './styled';
 import {useHistory} from 'react-router-dom';
 import { BsFillPersonCheckFill,BsFillFilePersonFill } from "react-icons/bs";
-
 import {SubmitHandler, useForm} from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
+
 import { api } from '../../services/api';
+
 interface FormsType{
     razaoSocial: string;
     nomeFantasia:string;
@@ -16,6 +17,7 @@ interface FormsType{
     estado: string;
     telefone:string;
 };
+
 
 const schema = yup.object({
     razaoSocial:yup.string().required('Razão Social é obrigatório'),
@@ -28,44 +30,32 @@ const schema = yup.object({
 }).required();
 
 export function SingUP(){
-    const[razao_social, setRazao_social] = useState('');
-    const[nome_fantasia, setNome_fantasia] = useState('');
-    const[cpf_cnpj, setCpf_cnpj] = useState('');
-    const[client_fone, setClient_fone] = useState('');
-    const[client_cidade, setClient_cidade] = useState('');
-    const[client_estado, setClient_estado] = useState('');
 
+    const {push} = useHistory();
 
     const {register,handleSubmit, formState:{errors}} = useForm<FormsType>({
         resolver:yupResolver(schema)
     });
-
-    const {goBack,push} = useHistory();
-
+    
    
-
-    async function AddClient(){
-       const response = await api.post('/client', {
-         razao_social:razao_social,
-         nome_fantasia:nome_fantasia,
-         cpf_cnpj:cpf_cnpj,
-         client_fone:client_fone,
-         client_cidade:client_cidade,
-         client_estado:client_estado
-        });
-        console.log("I am Response", response.data);
+   async function addClient(data:FormsType){
+            console.log(data);
+            const response = await api.post('/client',{
+                razao_social:data.razaoSocial,
+                nome_fantasia:data.nomeFantasia,
+                cpf_cnpj:data.cnpjCpf,
+                client_fone:data.telefone,
+                client_cidade:data.cidade,
+                client_estado:data.estado
+            });
+            if(!data){
+                return
+            } else{
+                push("/")
+            };
+            console.log(response);
     };
 
-     const onSubmit: SubmitHandler<FormsType> = async data => {
-        setRazao_social(data.razaoSocial);
-        setNome_fantasia(data.razaoSocial);
-        setCpf_cnpj(data.razaoSocial);
-        setClient_fone(data.razaoSocial);
-        setClient_cidade(data.razaoSocial);
-        setClient_estado(data.razaoSocial);
-
-        !data ? console.error('erro') : await AddClient();
-};
 
     return (
         <Container>
@@ -73,66 +63,77 @@ export function SingUP(){
                 <h2>Cadastrar Cliente</h2>
                 <BsFillFilePersonFill className="icon_title"/>
             </div>
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form onSubmit={handleSubmit(addClient)}>
 
                 <div  className="input_container">
-                    <label>Razão Social</label>
+                    <label htmlFor="razaoSocial">Razão Social</label>
                     <input 
                     type="text"
+                    id="razaoSocial"
                     placeholder='Razão Social'
-                    {...register("razaoSocial")}
+                    {...register('razaoSocial')}
                       />
-                    <p>{errors.razaoSocial?.message}</p>
+                      <p>{errors.razaoSocial?.message}</p>
                 </div>
 
                 <div className="input_container">
-                <label>Nome Fantasia</label>
+                <label htmlFor="nomeFantasia">Nome Fantasia</label>
                     <input 
                     type="text"
-                    placeholder='Nome Fantasia' 
-                    {...register("nomeFantasia")}
+                    id="nomeFantasia"
+                    placeholder='Nome Fantasia'
+                    {...register('nomeFantasia')}                    
                     />
                     <p>{errors.nomeFantasia?.message}</p>
                 </div>
 
                 <div className="input_container">
-                    <label>Telefone</label>
+                    <label htmlFor="telefone">Telefone</label>
                     <input 
                     type="text"
+                    id="telefone"
                     placeholder='Telefone'
                     {...register("telefone")}
                      />
-                     <p>{errors.telefone?.message}</p>
+
+                    <p>{errors.telefone?.message}</p>
+
                 </div>
 
                 <div className="input_container">
-                <label>CNPJ | CPF</label>
+                <label htmlFor="cnpjCpf">CNPJ | CPF</label>
                     <input 
                     type="text"
+                    id="cnpjCpf"
                     placeholder='CNPJ | CPF'
                     {...register("cnpjCpf")}
                      />
-                     <p>{errors.cnpjCpf?.message}</p>
+                    <p>{errors.cnpjCpf?.message}</p>
                 </div>
 
                 <div className="input_container">
-                <label>Cidade</label>
+                <label htmlFor="cidade">Cidade</label>
                     <input 
                     type="text"
+                    id="cidade"
                     placeholder='Cidade'
                     {...register("cidade")}
                     />
+
                     <p>{errors.cidade?.message}</p>
+
                 </div>
 
                 <div className="input_container">
-                <label>Estado</label>
+                <label htmlFor="estado">Estado</label>
                     <input 
                     type="text"
                     placeholder='Estado'
+                    id="estado"
                     {...register("estado")}
                      />
-                    <p>{errors.estado?.message}</p> 
+                        <p>{errors.estado?.message}</p> 
+
                 </div >  
 
                  <button type="submit" className="btn-SingUp">

@@ -1,7 +1,6 @@
 import React,{useState,useEffect} from 'react';
 import {Container} from './styled';
 import { BsPencilSquare,BsXCircle} from "react-icons/bs";
-import {useHistory} from 'react-router-dom';
 import { api } from '../../services/api';
 import { Link } from "react-router-dom";
 interface PropsClient{
@@ -28,15 +27,11 @@ export function Table(){
     async function deleteClient(id:number){
         await api.delete(`client/${id}`)
         getClient();
-    }
-    const {push} = useHistory();
-
-    function handleRoutesNavigation(){
-        push('/edit');
-     }
+    };
     return(
         
         <Container>
+            
             <table>
                 <thead>
                     <tr>

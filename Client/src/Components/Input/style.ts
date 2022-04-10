@@ -8,6 +8,8 @@ export const Container = styled.div`
     justify-content: center;
     input{
         width: 20rem;
+        padding: 0 1rem;
+
         height: 3rem; 
         border-radius:0.25rem 0rem 0rem 0.25rem;
         border: 0;

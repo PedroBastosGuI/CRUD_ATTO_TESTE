@@ -5,7 +5,6 @@ import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import { Home } from "./Pages/Home";
 import {SingUP} from "./Pages/SingUp"
 import { Edit } from "./Pages/Edit";
-import { Table } from "./Components/Table";
 
 
 function App() {
