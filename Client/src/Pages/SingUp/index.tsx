@@ -23,7 +23,7 @@ interface FormsType{
 const schema = yup.object({
     razaoSocial:yup.string().required('Razão Social é obrigatório'),
     nomeFantasia:yup.string().required(' Nome Fantasia é obrigatório'),
-    cnpjCpf:yup.string().matches(/(^\d{3}\.\d{3}\.\d{3}\-\d{2}$)|(^\d{2}\.\d{3}\.\d{3}\/\d{4}\-\d{2}$)/,"Formato Inválido use os . e -").required("Formato Inválido, use os . e -"),
+    cnpjCpf:yup.string().matches(/(^\d{3}\.\d{3}\.\d{3}\-\d{2}$)|(^\d{2}\.\d{3}\.\d{3}\/\d{4}\-\d{2}$)/,"Formato Inválido").required("Formato Inválido"),
     cidade:yup.string().required('Cidade é obrigatório'),
     estado:yup.string().required('Estado é obrigatório'),
     telefone:yup.string().required('Telefone é obrigatório'),
@@ -107,7 +107,7 @@ export function SingUP(){
                     <input 
                     type="text"
                     id="cnpjCpf"
-                    placeholder='CNPJ | CPF'
+                    placeholder='XXX-XXX-XXX-XX ou XX. XXX. XXX/0001-XX'
                     {...register("cnpjCpf")}
                      />
                     <p>{errors.cnpjCpf?.message}</p>
